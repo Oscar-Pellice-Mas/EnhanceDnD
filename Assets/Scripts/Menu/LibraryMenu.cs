@@ -164,8 +164,7 @@ public class LibraryMenu : MonoBehaviour
     public void FoucsLibrary(GameObject gameObject)
     {
         string name = gameObject.name;
-        InfoPanel.GetComponentInChildren<TMP_Text>().text = name;
-        /*switch (LibraryName)
+        switch (LibraryName)
         {
             case "backgrounds":
                 InfoBackground(name);
@@ -193,12 +192,12 @@ public class LibraryMenu : MonoBehaviour
                 break;
             default:
                 return;
-        }*/
+        }
     }
 
     private void InfoSpell(string name)
     {
-        throw new NotImplementedException();
+        InfoPanel.GetComponent<SpellPanel>().SetSpell(DB.Instance.GetSpell(name));
     }
 
     private void InfoRace(string name)
