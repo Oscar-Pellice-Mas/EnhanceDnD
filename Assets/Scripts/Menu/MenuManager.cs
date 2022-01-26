@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
         menuDict = new Dictionary<string, Menu>();
         foreach (Menu menu in menus) menuDict.Add(menu.name, menu);
         foreach (Menu menu in menus) menu.Close();
-        OpenMenu("TitleMenu");
+        OpenMenu("CharacterEditorMenu");
     }
 
     public void OpenMenu(string menuName)
