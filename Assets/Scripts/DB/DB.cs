@@ -476,21 +476,21 @@ public class DB : MonoBehaviour
         public int bonus;
     }
 
-    [System.Serializable]
+    /*[System.Serializable]
     public class StartingProficiencyOptions
     {
         public int choose;
         public string type;
         public List<string> fromProficiencies;
-    }
+    }*/
 
-    [System.Serializable]
+    /*[System.Serializable]
     public class AbilityBonusOptions
     {
         public int choose;
         public string type;
         public List<AbilityBonus> fromAbilityBonus;
-    }
+    }*/
 
     [System.Serializable]
     public class Race
@@ -499,13 +499,13 @@ public class DB : MonoBehaviour
         public string name;
         public int speed;
         public List<AbilityBonus> ability_bonuses;
-        public AbilityBonusOptions ability_bonus_options;
+        public From ability_bonus_options; // TODO: Test
         public string alignment;
         public string age;
         public string size;
         public string size_description;
         public List<string> starting_proficiencies;
-        public StartingProficiencyOptions starting_proficiency_options;
+        public From starting_proficiency_options; // TODO: Test
         public List<string> languages;
         public string language_desc;
         public List<string> traits;

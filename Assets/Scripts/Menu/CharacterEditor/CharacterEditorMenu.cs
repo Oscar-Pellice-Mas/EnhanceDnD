@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterEditorMenu : MonoBehaviour
 {
+    private string PcName;
+    private BasicPC basicPc;
+
     [SerializeField] private ChEd_Class chEd_Class;
     [SerializeField] private ChEd_Race chEd_Race;
 
@@ -17,8 +20,20 @@ public class CharacterEditorMenu : MonoBehaviour
 
     void Start()
     {
-        chEd_Class.Init();
-        chEd_Race.Init();
+        // Pc Init
+        if (PcName != null)
+        {
+            PcName = MenuManager.Instance.Pc_name;
+            basicPc = new BasicPC(Application.dataPath + "/Files/Characters/" + PcName);
+        } else
+        {
+            basicPc = new BasicPC();
+        }
+        
+        // Menu Init
+        chEd_Class.Init(basicPc);
+        chEd_Race.Init(basicPc);
+
         // Initial Tab
         raceObject.SetActive(true);
         classObject.SetActive(false);

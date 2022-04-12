@@ -150,15 +150,15 @@ public class JSON_import_Races : MonoBehaviour
                 aux.starting_proficiencies.Add(startingProficiency.index);
             }
             //public JS_StartingProficiencyOptions starting_proficiency_options;
-            aux.starting_proficiency_options = new DB.StartingProficiencyOptions();
+            aux.starting_proficiency_options = new DB.From();
             aux.starting_proficiency_options.choose = jsonObject[i].starting_proficiency_options.choose;
             aux.starting_proficiency_options.type = jsonObject[i].starting_proficiency_options.type;
             if (jsonObject[i].starting_proficiency_options.from != null)
             {
-                aux.starting_proficiency_options.fromProficiencies = new List<string>();
+                aux.starting_proficiency_options.from = new List<string>();
                 foreach (JS_From from in jsonObject[i].starting_proficiency_options.from)
                 {
-                    aux.starting_proficiency_options.fromProficiencies.Add(from.index);
+                    aux.starting_proficiency_options.from.Add(from.index);
                 }
             }
             
@@ -196,18 +196,16 @@ public class JSON_import_Races : MonoBehaviour
             }
             
             //public JS_AbilityBonusOptions ability_bonus_options;
-            aux.ability_bonus_options = new DB.AbilityBonusOptions();
+            aux.ability_bonus_options = new DB.From();
             aux.ability_bonus_options.choose = jsonObject[i].ability_bonus_options.choose;
             aux.ability_bonus_options.type = jsonObject[i].ability_bonus_options.type;
             if (jsonObject[i].ability_bonus_options.from != null)
             {
-                aux.ability_bonus_options.fromAbilityBonus = new List<DB.AbilityBonus>();
+                aux.ability_bonus_options.from = new List<string>();
                 foreach (JS_From from in jsonObject[i].ability_bonus_options.from)
                 {
-                    DB.AbilityBonus auxiliar = new DB.AbilityBonus();
-                    auxiliar.ability_score = from.ability_score.index;
-                    auxiliar.bonus = from.bonus;
-                    aux.ability_bonus_options.fromAbilityBonus.Add(auxiliar);
+                    string auxiliar = from.ability_score.index + "-" + from.bonus.ToString();
+                    aux.ability_bonus_options.from.Add(auxiliar);
                 }
             }
             

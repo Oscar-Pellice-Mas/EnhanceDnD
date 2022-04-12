@@ -9,6 +9,8 @@ public class ChEd_Class : MonoBehaviour
 {
     public static ChEd_Class Instance;
 
+    private BasicPC basicPc;
+
     [SerializeField] private GameObject ClassItem;
     [SerializeField] private GameObject parent;
 
@@ -28,8 +30,9 @@ public class ChEd_Class : MonoBehaviour
         Instance = this;
     }
 
-    public void Init()
+    public void Init(BasicPC basicPC)
     {
+        this.basicPc = basicPC;
         ResetItems();
         foreach (DB.Class @class in DB.Instance.dictionary_Class.Values)
         {
