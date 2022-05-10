@@ -19,20 +19,23 @@ public class BasicPC
         Load(path);
     }
 
-    public void Save(string name)
+    public void Save()
     {
-        string json = JsonUtility.ToJson(this);
-        string outputPath = Application.dataPath + "/Files/Characters/" + name + ".json";
+        PC2Save pC2Save = new PC2Save();
+        pC2Save.Name = Name;
+
+        string json = JsonUtility.ToJson(pC2Save);
+        string outputPath = Application.dataPath + "/Files/Characters/" + this.Name + ".json";
         System.IO.File.WriteAllText(outputPath, json);
     }
 
     public void Load(string name)
     {
-        string inputPath = Application.dataPath + "/Files/Characters/" + name + ".json";
-        string jsonString = System.IO.File.ReadAllText(inputPath);
-        BasicPC[] jsonObject = JsonHelper.FromJson<BasicPC>(jsonString);
-        Name = jsonObject[0].Name;
-        Sprite = jsonObject[0].Sprite;
+        //string inputPath = Application.persistentDataPath + "/Files/Characters/" + name + ".json";
+        string jsonString = System.IO.File.ReadAllText(name);
+        PC2Save jsonObject = JsonUtility.FromJson<PC2Save>(jsonString);
+        Name = jsonObject.Name;
+        /*Sprite = jsonObject.Sprite;
         RolledHP = jsonObject[0].RolledHP;
         Race = jsonObject[0].Race;
         Subrace = jsonObject[0].Subrace;
@@ -40,7 +43,7 @@ public class BasicPC
         Classes = jsonObject[0].Classes;
         Subclasses = jsonObject[0].Subclasses;
         ClassChoices = jsonObject[0].ClassChoices;
-        Scores = jsonObject[0].Scores;
+        Scores = jsonObject[0].Scores;*/
     }
 
 
@@ -139,5 +142,11 @@ public class BasicPC
         basicPC.AddClass("barbarian", 2);
 
         return basicPC;
+    }
+
+    [System.Serializable]
+    public class PC2Save
+    {
+        public string Name;
     }
 }

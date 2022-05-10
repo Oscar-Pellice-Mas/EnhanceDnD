@@ -114,9 +114,9 @@ public class JSON_import_Subraces : MonoBehaviour
             aux.languages = jsonObject[i].languages;
             //public List<JS_RacialTrait> racial_traits;
             aux.racial_traits = new List<string>();
-            foreach (JS_RacialTrait startingProficiency in jsonObject[i].racial_traits)
+            foreach (JS_RacialTrait racialTrait in jsonObject[i].racial_traits)
             {
-                aux.starting_proficiencies.Add(startingProficiency.index);
+                aux.racial_traits.Add(racialTrait.index);
             }
             //public JS_LanguageOptions language_options;
             aux.language_options = new DB.From();
@@ -130,7 +130,8 @@ public class JSON_import_Subraces : MonoBehaviour
                     aux.language_options.from.Add(from.index);
                 }
             }
-            
+            aux.starting_proficiency_options = new DB.From();
+            aux.ability_bonus_options = new DB.From();
 
             subraces[i] = aux;
         }

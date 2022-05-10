@@ -1,22 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CharacterEditorMenu : MonoBehaviour
 {
-    private string PcName;
-    private BasicPC basicPc;
+    public static CharacterEditorMenu Instance;
+
+    private string PcName; 
+    public BasicPC basicPc;
 
     [SerializeField] private ChEd_Class chEd_Class;
     [SerializeField] private ChEd_Race chEd_Race;
 
+    [SerializeField] private GameObject mainObject;
     [SerializeField] private GameObject classObject;
     [SerializeField] private GameObject raceObject;
     [SerializeField] private GameObject scoreObject;
     [SerializeField] private GameObject backgroundObject;
     [SerializeField] private GameObject equipmentObject;
+    [SerializeField] private GameObject validationObject;
 
     private GameObject previousObject;
+
+    private void Awake()
+    {
+        // Instance creation
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Start()
     {
@@ -35,17 +51,25 @@ public class CharacterEditorMenu : MonoBehaviour
         chEd_Race.Init(basicPc);
 
         // Initial Tab
-        raceObject.SetActive(true);
+        previousObject = mainObject;
+        mainObject.SetActive(true);
+        raceObject.SetActive(false);
         classObject.SetActive(false);
         scoreObject.SetActive(false);
         backgroundObject.SetActive(false);
         equipmentObject.SetActive(false);
+        validationObject.SetActive(false);
     }
 
     public void Select(string name)
     {
         switch (name)
         {
+            case "main":
+                mainObject.SetActive(true);
+                if (previousObject != null && previousObject != mainObject) previousObject.SetActive(false);
+                previousObject = mainObject;
+                break;
             case "class":
                 classObject.SetActive(true);
                 if (previousObject != null && previousObject != classObject) previousObject.SetActive(false);
@@ -71,8 +95,18 @@ public class CharacterEditorMenu : MonoBehaviour
                 if (previousObject != null && previousObject != equipmentObject) previousObject.SetActive(false);
                 previousObject = equipmentObject;
                 break;
+            case "validation":
+                validationObject.SetActive(true);
+                if (previousObject != null && previousObject != validationObject) previousObject.SetActive(false);
+                previousObject = validationObject;
+                break;
             default:
                 break;
         }
+    }
+
+    public void SetName(TMP_Text input)
+    {
+        basicPc.Name = input.text;
     }
 }

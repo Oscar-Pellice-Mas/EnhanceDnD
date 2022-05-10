@@ -78,6 +78,14 @@ public class DB : MonoBehaviour
     }
 
     [System.Serializable]
+    public class StartingEquipmentOptionCategory
+    {
+        public int choose;
+        public string type;
+        public string fromCategory;
+    }
+
+    [System.Serializable]
     public class FromIdeals
     {
         public string desc;
@@ -100,7 +108,7 @@ public class DB : MonoBehaviour
         public List<string> starting_proficiencies;
         public From language_options;
         public List<StartingEquipment> starting_equipment;
-        public List<StartingEquipmentOption> starting_equipment_options;
+        public List<StartingEquipmentOptionCategory> starting_equipment_options;
         public Info feature;
         public From personality_traits;
         public Ideals ideals;
@@ -660,10 +668,12 @@ public class DB : MonoBehaviour
         public string parent_race;
         public string desc;
         public List<AbilityBonus> ability_bonuses;
+        public From ability_bonus_options;
         public List<string> starting_proficiencies;
+        public From starting_proficiency_options;
         public List<string> languages;
-        public List<string> racial_traits;
         public From language_options;
+        public List<string> racial_traits;
     }
 
     [System.Serializable]

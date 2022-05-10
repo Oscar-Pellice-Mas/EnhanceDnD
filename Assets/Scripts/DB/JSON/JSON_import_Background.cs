@@ -167,13 +167,13 @@ public class JSON_import_Background : MonoBehaviour
                 aux.starting_equipment.Add(startingEquipment);
             }
 
-            aux.starting_equipment_options = new List<DB.StartingEquipmentOption>();
+            aux.starting_equipment_options = new List<DB.StartingEquipmentOptionCategory>();
             foreach (JS_StartingEquipmentOption obj in jsonObject[i].starting_equipment_options)
             {
-                DB.StartingEquipmentOption startingEquipmentOption = new DB.StartingEquipmentOption();
+                DB.StartingEquipmentOptionCategory startingEquipmentOption = new DB.StartingEquipmentOptionCategory();
                 startingEquipmentOption.choose = obj.choose;
                 startingEquipmentOption.type = obj.type;
-                startingEquipmentOption.from = new List<DB.StartingEquipment>();
+                startingEquipmentOption.fromCategory = obj.from.equipment_category.index;
                 aux.starting_equipment_options.Add(startingEquipmentOption);
             }
 

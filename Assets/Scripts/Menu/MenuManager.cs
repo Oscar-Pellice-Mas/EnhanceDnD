@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     private Menu previousMenu;
 
     //Player PC name
-    public string Pc_name { get; set; }
+    public string Pc_name;
     // Character choose
     public string PC_Character { get; set; }
 
@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
         menuDict = new Dictionary<string, Menu>();
         foreach (Menu menu in menus) menuDict.Add(menu.name, menu);
         foreach (Menu menu in menus) menu.Close();
-        OpenMenu("CharacterEditorMenu");
+        OpenMenu("TitleMenu");
     }
 
     public void OpenMenu(string menuName)

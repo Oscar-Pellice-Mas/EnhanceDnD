@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Diagnostics;
+using System;
+using System.Linq;
 
 public class CharacterMenu : MonoBehaviour
 {
@@ -18,13 +20,24 @@ public class CharacterMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        updateCharacters();
+    }
+
+    private void OnEnable()
+    {
+        updateCharacters();
+    }
+
+    private void updateCharacters()
+    {
         // Llegir totes les fitxes creades com a fitxers
-        foreach (string file in Directory.GetFiles(Application.dataPath + "/Files/Characters"))
+        PCs.Clear();
+        foreach (string file in Directory.GetFiles(Application.dataPath + "/Files/Characters").Where(name => name.EndsWith(".json")))
         {
             PCs.Add(new BasicPC(file));
         }
 
-        for(int i = 0; i < listParent.transform.childCount; i++) Destroy(listParent.transform.GetChild(i).gameObject);
+        for (int i = 0; i < listParent.transform.childCount; i++) Destroy(listParent.transform.GetChild(i).gameObject);
 
         GameObject go;
         // Crear els prefabs per cada fitxa
@@ -41,10 +54,8 @@ public class CharacterMenu : MonoBehaviour
         go = Instantiate(emptyButtonPrefab, listParent.transform);
         go.name = "Empty";
         go.GetComponentInChildren<Button>().onClick.AddListener(OnUseItem);
-        
-
     }
-    
+
     public void OnUseItem()
     {
         string callingFuncName = new StackFrame(1).GetMethod().Name;
