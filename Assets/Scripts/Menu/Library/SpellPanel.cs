@@ -13,7 +13,7 @@ public class SpellPanel : MonoBehaviour
 
     public void SetSpell(DB.Spell spell)
     {
-        spellName.text = spell.name;
+        spellName.text = "<size=200%>" + spell.name;
 
         string aux = "";
         foreach (string str in spell.desc) aux += str + "\n\n";
@@ -29,17 +29,3 @@ public class SpellPanel : MonoBehaviour
         this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 }
-
-
-//descriptionObject.SetActive(false);
-//RectTransform rt = descriptionObject.GetComponent<RectTransform>();
-
-/*Rect rect = rt.rect;
-Debug.Log(description.preferredHeight);
-rect.Set(rect.x,rect.y,rect.width,description.preferredHeight);
-Debug.Log(rect.height);
-Debug.Log(descriptionObject.GetComponent<RectTransform>().rect.height);*/
-
-//rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, description.preferredHeight+50);
-//rt.ForceUpdateRectTransforms();
-//descriptionObject.SetActive(true);

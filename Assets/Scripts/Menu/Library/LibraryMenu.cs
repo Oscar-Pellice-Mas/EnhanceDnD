@@ -25,6 +25,11 @@ public class LibraryMenu : MonoBehaviour
 
     private string libraryName;
 
+    private void Start()
+    {
+        SelectLibrary("backgrounds");
+    }
+
     public void SelectLibrary(string name)
     {
         libraryName = name;
@@ -66,6 +71,8 @@ public class LibraryMenu : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowSpells()
@@ -79,6 +86,7 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go);});
         }
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowRaces()
@@ -92,6 +100,7 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go); });
         }
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowMonsters()
@@ -118,6 +127,7 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go); });
         }
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowFeats()
@@ -131,6 +141,7 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go); });
         }
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowEquipment()
@@ -144,6 +155,8 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go); });
         }
+
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowClasses()
@@ -157,6 +170,7 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go); });
         }
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     private void ShowBackgrounds()
@@ -170,6 +184,7 @@ public class LibraryMenu : MonoBehaviour
             Button button = go.GetComponent<Button>();
             button.onClick.AddListener(() => { FoucsLibrary(go); });
         }
+        this.GetComponent<RectTransform>().ForceUpdateRectTransforms();
     }
 
     public void Search()
